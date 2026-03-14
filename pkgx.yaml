@@ -1,0 +1,3 @@
+dependencies:
+  go.dev: 1.25.6
+  taskfile.dev: 3.49.1

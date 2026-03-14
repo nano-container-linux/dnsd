@@ -1,0 +1,45 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "Europe/Paris",
+  "schedule": ["every monday"],
+  "labels": ["dependencies"],
+  "commitMessagePrefix": "chore(deps):",
+
+  "gomod": {
+    "enabled": true
+  },
+
+  "github-actions": {
+    "enabled": true
+  },
+
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update go.dev version in pkgx.yaml",
+      "fileMatch": ["^pkgx\\.yaml$"],
+      "matchStrings": ["go\\.dev:\\s*(?<currentValue>[\\d.]+)"],
+      "depNameTemplate": "go",
+      "datasourceTemplate": "golang-version",
+      "versioningTemplate": "semver-coerced"
+    },
+    {
+      "customType": "regex",
+      "description": "Update taskfile.dev version in pkgx.yaml",
+      "fileMatch": ["^pkgx\\.yaml$"],
+      "matchStrings": ["taskfile\\.dev:\\s*(?<currentValue>[\\d.]+)"],
+      "depNameTemplate": "go-task/task",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v?(?<version>.+)$",
+      "versioningTemplate": "semver-coerced"
+    }
+  ],
+
+  "packageRules": [
+    {
+      "matchManagers": ["gomod", "github-actions", "custom.regex"],
+      "groupName": "go-and-actions"
+    }
+  ]
+}

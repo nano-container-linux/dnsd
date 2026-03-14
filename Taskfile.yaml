@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+  default:
+    desc: Liste les tâches disponibles
+    silent: true
+    cmds:
+      - task --list
+
+  build:
+    desc: Compile le binaire dnsd
+    cmds:
+      - mkdir -p bin
+      - pkgx go build -o bin/dnsd .
+
+  run:
+    desc: Lance dnsd (go run)
+    cmds:
+      - pkgx go run . run --config-dir etc/dnsd
+
+  validate:
+    desc: Valide la configuration HCL
+    cmds:
+      - pkgx go run . validate --config-dir etc/dnsd
