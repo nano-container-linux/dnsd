@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/nano-container-linux/libdnsd"
 	"golang.org/x/crypto/ssh"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
@@ -544,7 +545,7 @@ func (s *dynamicGRPCService) AcmeTokenCreate(ctx context.Context, req *AcmeToken
 	if s.cfg.Server.GRPC == nil {
 		return nil, fmt.Errorf("grpc not configured")
 	}
-	fqdn := acmeChallengeFQDN(req.FQDN)
+	fqdn := libdnsd.AcmeChallengeFQDN(req.FQDN)
 	signed := "acme-token-create:" + fqdn
 	if err := verifySignedString(signed, req.PublicKey, req.Signature, *s.cfg.Server.GRPC); err != nil {
 		return nil, err

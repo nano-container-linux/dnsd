@@ -1,3 +1,5 @@
+replace github.com/nano-container-linux/libdnsd => ../libdnsd
+
 module dnsd
 
 go 1.25.6
@@ -5,6 +7,7 @@ go 1.25.6
 require (
 	github.com/hashicorp/hcl/v2 v2.24.0
 	github.com/miekg/dns v1.1.72
+	github.com/nano-container-linux/libdnsd v0.0.0-00010101000000-000000000000
 	github.com/prometheus/client_golang v1.23.2
 	github.com/rs/zerolog v1.34.0
 	github.com/spf13/cobra v1.10.2

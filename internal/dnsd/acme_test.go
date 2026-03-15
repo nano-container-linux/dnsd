@@ -10,6 +10,8 @@ import (
 	"strings"
 	"sync"
 	"testing"
+
+	"github.com/nano-container-linux/libdnsd"
 )
 
 // ---- resolveACMETTL -------------------------------------------------------
@@ -128,13 +130,13 @@ func newTestRuntime(zones []string) *RuntimeConfig {
 }
 
 func TestACMEChallengeFQDN(t *testing.T) {
-	if got := acmeChallengeFQDN("example.com."); got != "_acme-challenge.example.com." {
+	if got := libdnsd.AcmeChallengeFQDN("example.com."); got != "_acme-challenge.example.com." {
 		t.Fatalf("unexpected challenge fqdn: %s", got)
 	}
-	if got := acmeChallengeFQDN("*.example.com."); got != "_acme-challenge.example.com." {
+	if got := libdnsd.AcmeChallengeFQDN("*.example.com."); got != "_acme-challenge.example.com." {
 		t.Fatalf("unexpected wildcard challenge fqdn: %s", got)
 	}
-	if got := acmeChallengeFQDN("_acme-challenge.example.com."); got != "_acme-challenge.example.com." {
+	if got := libdnsd.AcmeChallengeFQDN("_acme-challenge.example.com."); got != "_acme-challenge.example.com." {
 		t.Fatalf("unexpected passthrough challenge fqdn: %s", got)
 	}
 }

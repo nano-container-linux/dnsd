@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	"github.com/miekg/dns"
+	"github.com/nano-container-linux/libdnsd"
 	"github.com/rs/zerolog/log"
 )
 
@@ -62,20 +63,11 @@ func resolveACMEListen(cfg *ACMEConfig) (addr string, network string, err error)
 	return addr, network, nil
 }
 
-// acmeChallengeFQDN returns the canonical _acme-challenge.fqdn. name for domain.
-// If domain already starts with _acme-challenge., it is returned as-is (normalized).
-func acmeChallengeFQDN(domain string) string {
-	norm := normalizeName(domain)
-	norm = strings.TrimPrefix(norm, "*.")
-	if strings.HasPrefix(norm, "_acme-challenge.") {
-		return norm
-	}
-	return "_acme-challenge." + norm
-}
+// acmeChallengeFQDN is now libdnsd.AcmeChallengeFQDN
 
 // isACMEChallengeName returns true if name is a valid _acme-challenge. prefixed FQDN.
 func isACMEChallengeName(name string) bool {
-	norm := normalizeName(name)
+	norm := libdnsd.NormalizeName(name)
 	return strings.HasPrefix(norm, "_acme-challenge.") && norm != "_acme-challenge."
 }
 
@@ -83,7 +75,7 @@ func isACMEChallengeName(name string) bool {
 func (cfg *RuntimeConfig) hasZoneForName(name string) bool {
 	cfg.mu.RLock()
 	defer cfg.mu.RUnlock()
-	norm := normalizeName(name)
+	norm := libdnsd.NormalizeName(name)
 	for _, zone := range cfg.Zones {
 		if dns.IsSubDomain(zone, norm) {
 			return true
@@ -182,7 +174,7 @@ func loadACMETokens(configDir string) (map[string]string, error) {
 // createACMEToken generates a new token for fqdn, persists it, and registers it in the runtime.
 // fqdn may be a base domain ("example.com.") or a _acme-challenge.xxx. name.
 func (cfg *RuntimeConfig) createACMEToken(fqdn string) (*ACMETokenEntry, error) {
-	challengeFQDN := acmeChallengeFQDN(fqdn)
+	challengeFQDN := libdnsd.AcmeChallengeFQDN(fqdn)
 	if challengeFQDN == "_acme-challenge." {
 		return nil, fmt.Errorf("invalid fqdn: %q", fqdn)
 	}
