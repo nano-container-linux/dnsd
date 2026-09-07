@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"dnsd/internal/dnsd"
+	"dnsd/server"
 
 	"github.com/spf13/cobra"
 )
@@ -13,7 +13,7 @@ func init() {
 		Use:   "run",
 		Short: "Run DNS server",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return dnsd.Run(configDir)
+			return server.Run(configDir)
 		},
 	}
 
