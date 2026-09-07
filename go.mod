@@ -5,13 +5,13 @@ go 1.26.4
 require (
 	github.com/hashicorp/hcl/v2 v2.24.0
 	github.com/miekg/dns v1.1.73
-	github.com/nano-container-linux/libdnsd v0.0.0-20260830080539-922cc98389b1
+	github.com/nano-container-linux/libdnsd v0.0.0-20260903192929-b7aad72e4799
 	github.com/prometheus/client_golang v1.24.1
 	github.com/rs/zerolog v1.35.1
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/viper v1.21.0
 	github.com/zclconf/go-cty v1.19.0
-	golang.org/x/crypto v0.55.0
+	golang.org/x/crypto v0.56.0
 	google.golang.org/grpc v1.83.2
 )
 
@@ -39,7 +39,6 @@ require (
 	github.com/spf13/cast v1.10.0 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
-	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/mod v0.38.0 // indirect
 	golang.org/x/net v0.58.0 // indirect
