@@ -45,8 +45,8 @@ github.com/mitchellh/go-wordwrap v1.0.1 h1:TLuKupo69TCn6TQSyGxwI1EblZZEsQ0vMlAFQ
 github.com/mitchellh/go-wordwrap v1.0.1/go.mod h1:R62XHJLzvMFRBbcrT7m7WgmE1eOyTSsCt+hzestvNj0=
 github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 h1:C3w9PqII01/Oq1c1nUAm88MOHcQC9l5mIlSMApZMrHA=
 github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822/go.mod h1:+n7T8mK8HuQTcFwEeznm/DIxMOiR9yIdICNftLE1DvQ=
-github.com/nano-container-linux/libdnsd v0.0.0-20261004211352-8247159cde88 h1:vlnWLPVUKyBb9LYZ3G3dLGSa1jzExtaSD/6a1Zrjnd4=
-github.com/nano-container-linux/libdnsd v0.0.0-20261004211352-8247159cde88/go.mod h1:napZyo/823MtZIWkEFcmtQKFBWK3l/IYCxxEME6OUo0=
+github.com/nano-container-linux/libdnsd v0.0.0-20261010155851-9d5e3a9dd442 h1:hRMIVFT++SITrQVMNQzg6sKbNQNxNp1ygkAwUvnWf8A=
+github.com/nano-container-linux/libdnsd v0.0.0-20261010155851-9d5e3a9dd442/go.mod h1:tBYtE+4pc8iNdxl1MO/5SaYO1DrZW9HLZ8HYItkt26g=
 github.com/pelletier/go-toml/v2 v2.2.4 h1:mye9XuhQ6gvn5h28+VilKrrPoQVanw5PMw/TB0t5Ec4=
 github.com/pelletier/go-toml/v2 v2.2.4/go.mod h1:2gIqNv+qfxSVS7cM2xJQKtLSTLUE9V8t9Stt+h56mCY=
 github.com/prometheus/client_golang v1.25.0 h1:cDtW1TcFsMi1RJc8khwCKB4VhzwV04aKqbYtNOXuiK0=
