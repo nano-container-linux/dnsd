@@ -213,15 +213,20 @@ Two ready-to-use server config examples are available:
 - `etc/dnsd/examples/server.prod.hcl`: bind on 53 with query/transfer ACL examples and weighted Google/Cloudflare groups
 - `etc/dnsd/examples/server.lab.hcl`: local lab profile (127.0.0.1:8053) with a single upstream group
 
-### OpenPubkey certificates (OIDC email)
+### OpenPubkey/OIDC-style certificate auth
 
-Current auth supports raw SSH public keys from `authorized_keys_file`.
-OpenPubkey certificate-based authorization by OIDC email is a good next step and can be added by:
+In addition to raw SSH public keys (`authorized_keys_file`), `dnsd` also supports
+SSH user certificate authentication for dynamic/ACME gRPC requests.
 
-- trusting one or more CA keys,
-- validating SSH certificates on submit,
-- extracting OIDC-linked email from certificate identity,
-- checking that email against an allowlist.
+Current behavior:
+
+- trust one or more user CAs via `trusted_user_ca_keys_file`
+- validate submitted SSH user certificates against trusted CAs
+- extract email identities from certificate principals / key ID
+- enforce allowlists via `authorized_emails_file` (exact email and domain rules)
+- evaluate optional group expressions from certificate extensions (including OIDC/OpenPubkey-style group keys)
+
+This provides practical OpenPubkey/OIDC-style authorization using SSH certificates.
 
 ## dnsctl client
 
