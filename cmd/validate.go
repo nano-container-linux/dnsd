@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"dnsd/internal/dnsd"
+	"dnsd/server"
 	"fmt"
 
 	"github.com/spf13/cobra"
@@ -14,7 +14,7 @@ func init() {
 		Use:   "validate",
 		Short: "Validate DNS config files",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if err := dnsd.Validate(configDir); err != nil {
+			if err := server.Validate(configDir); err != nil {
 				return err
 			}
 			fmt.Fprintln(cmd.OutOrStdout(), "Configuration is valid")
