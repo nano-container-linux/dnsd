@@ -5,7 +5,7 @@ go 1.27.3
 require (
 	github.com/hashicorp/hcl/v2 v2.25.0
 	github.com/miekg/dns v1.1.73
-	github.com/nano-container-linux/libdnsd v0.0.0-20261101090749-1aaab0829fb3
+	github.com/nano-container-linux/libdnsd v0.0.0-20261112183713-cdc317ab9ef6
 	github.com/prometheus/client_golang v1.25.0
 	github.com/rs/zerolog v1.35.1
 	github.com/spf13/cobra v1.10.2
